@@ -1,0 +1,26 @@
+<mat-table style="margin: 10px; width: 100% !important;" mat-table [dataSource]="dataSource">
+    <ng-container *ngFor="let col of tableCols; let i = index" [matColumnDef]="col.key">
+        <mat-header-cell *matHeaderCellDef>{{ tableCols[i]["display"] }}</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <ng-container *ngIf="!col.config; else hasConfig">
+                {{ element[col.key] }}
+            </ng-container>
+            <ng-template #hasConfig>
+                <ng-container *ngIf="col.config.isBoolean">
+                    {{ showBooleanValue(element, col) }}
+                </ng-container>
+                <ng-container *ngIf="col.config.isDate">
+                    {{ element[col.key] | date: col.config.format }}
+                </ng-container>
+                <ng-container *ngIf="col.config.isAction">
+                    <button *ngFor="let action of col.config.actions" (click)="emitter.emit({action:action, element: element})" mat-button>
+                        <mat-icon color="{{action.color}}">{{action.icon}}</mat-icon>
+                    </button>
+                </ng-container>
+            </ng-template>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="keys"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: keys"></mat-row>
+</mat-table>
+<div class="mt20 mb20 text-center" *ngIf="dataSource.length === 0">No data</div>

@@ -1,0 +1,27 @@
+.row {
+  display: flex;
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+.column {
+  flex: 50%;
+}
+
+.flex-box-2 {
+  display:flex;
+  justify-content: flex-end;
+  outline: 2px deeppink dashed;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.example-full-width {
+  width: 100%;
+}

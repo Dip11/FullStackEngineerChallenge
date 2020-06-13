@@ -1,0 +1,86 @@
+
+<section id="sample-table" class="mat-elevation-z8 bg-white">
+    <div class="ml20 mr20">
+        <div class="row mt20">
+            <div class="column">
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+
+            </div>
+            <div class="column" style="margin-left:auto; padding-top: 10px">
+                <button (click)="addNewEmployee()" style="position: absolute; right: 50px;" mat-raised-button color="accent" >
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </div>
+        <table mat-table [dataSource]="dataSource" matSort class="w-100">
+            <!--    <ng-container matColumnDef="select">-->
+            <!--      <th mat-header-cell *matHeaderCellDef>-->
+            <!--        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">-->
+            <!--        </mat-checkbox>-->
+            <!--      </th>-->
+            <!--      <td mat-cell *matCellDef="let row">-->
+            <!--        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">-->
+            <!--        </mat-checkbox>-->
+            <!--      </td>-->
+            <!--    </ng-container>-->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+                <th mat-header-cell *matHeaderCellDef> FirstName </th>
+                <td mat-cell *matCellDef="let row"> {{row.firstName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+                <th mat-header-cell *matHeaderCellDef> LastName </th>
+                <td mat-cell *matCellDef="let row"> {{row.lastName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let row" > {{row.email}} </td>
+            </ng-container>
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef> Edit </th>
+                <td mat-cell *matCellDef="let row" >
+                    <button (click)="editEmployee(row)" mat-mini-fab color="primary">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="addReviewer">
+                <th mat-header-cell *matHeaderCellDef> Add Reviewer </th>
+                <td mat-cell *matCellDef="let row" >
+                    <button (click)="addReviewer(row)" mat-mini-fab color="accent">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="listReviewers">
+                <th mat-header-cell *matHeaderCellDef> Reviewers </th>
+                <td mat-cell *matCellDef="let row" >
+                    <button (click)="listReviewers(row)" mat-mini-fab>
+                        <mat-icon>list</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef> Delete </th>
+                <td mat-cell *matCellDef="let row" >
+                    <button mat-mini-fab color="warn" (click)="deleteEmployee(row)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+        </table>
+        <div class="pb20 pt20 text-center" *ngIf="dataSource.length <= 0">No data</div>
+        <mat-paginator #paginator *ngIf="dataSource.length > 0" [pageSize]="pageSize" [showFirstLastButtons]="false" [length]="totalSize" [pageIndex]="currentPage" (page)="handlePage($event)"></mat-paginator>
+    </div>
+</section>

@@ -1,0 +1,7 @@
+DEBUG = True
+
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://pay_pay:pay_pay@127.0.0.1/pay_pay'
+SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+AUTHLIB_INSECURE_TRANSPORT=True
+

@@ -1,0 +1,20 @@
+<div fxLayout="row wrap" fxLayout.lt-sm="column" fxFlex="100" fxLayoutAlign="space-around stretch">
+     <div fxFlex.gt-xs="100">
+      <form [formGroup]="performancePhraseForm" class="example-form" >
+                <div class="mb20" style="text-align: center"> <h3> {{title}} </h3></div>
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Name" formControlName="name">
+              </mat-form-field>
+          <div>
+              <div style="text-align: center; color: darkred" *ngIf="hasFormErrors" class="example-full-width">
+                  <h5>{{errorMessage}}</h5>
+              </div>
+              <button  class="example-full-width"  mat-raised-button color="accent" (click)="savePerformancePhrase()">
+                  <mat-icon>save</mat-icon>
+                  Save
+              </button>
+          </div>
+
+      </form>
+         </div>
+</div>

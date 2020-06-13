@@ -1,4 +1,121 @@
 # Full Stack Developer Challenge
+
+
+
+## Stack Used
+
+
+- Flask(Python)
+
+- MySQL
+
+- Angular
+
+## Server Setup
+
+Install  Requirements
+
+```
+$ pip install -r requirements.txt 
+```
+
+## DB Setup
+
+Create a database named `pay_pay` with username `pay_pay` and password `pay_pay` 
+
+DB Credentials are given in `alembic.ini`  and `config/default` files
+
+```
+mysql+pymysql://pay_pay:pay_pay@127.0.0.1/pay_pay
+```
+
+DB Migration
+
+```
+alembic upgrade head
+```
+
+Create admin(role = 1) and employee(role = 2) user and other authentication tables
+
+```
+python db_seeder.py 
+```
+
+Run Server
+
+```
+python run.py
+```
+
+## Login Credentials
+
+Admin Login
+
+**email: admin@paypay.com**
+**password: testtest**
+
+Employee Login
+
+**email: employee1@paypay.com**
+**password: testtest**
+
+## Client Setup
+
+```
+cd client/
+npm install
+ng serve
+```
+
+## ScreenShots
+
+Login Screen
+
+![Screenshot](ScreenShots/LoginScreen.png)
+
+Employee List(admin_view)
+
+![Screenshot](ScreenShots/EmployeeTableScreen.png)
+
+Add Employee(admin_view)
+
+![Screenshot](ScreenShots/AddEmployeeScreen.png)
+
+Edit Employee(admin_view)
+
+![Screenshot](ScreenShots/EditEmployeeScreen.png)
+
+Delete Employee(admin_view)
+
+![Screenshot](ScreenShots/DeleteEmployeeScreen.png)
+
+Add Reviewer(admin_view)
+
+![Screenshot](ScreenShots/AddReviewerScreen.png)
+
+Reviewers List(admin_view)
+
+![Screenshot](ScreenShots/ReviewersListTable.png)
+
+Performance Phrase List(admin_view)
+
+![Screenshot](ScreenShots/PerformancePhraseTableScreen.png)
+
+Add Performance Phrase(admin_view)
+
+![Screenshot](ScreenShots/AddPerformancePhraseScreen.png)
+
+Employee Requiring Review(employee_view)
+
+![Screenshot](ScreenShots/EmployeeReviewsScreen.png)
+
+Employee Adding Review(employee_view)
+
+![Screenshot](ScreenShots/AddReviewScreen.png)
+
+
+
+# Full Stack Developer Challenge
 This is an interview challengs. Please feel free to fork. Pull Requests will be ignored.
 
 ## Requirements

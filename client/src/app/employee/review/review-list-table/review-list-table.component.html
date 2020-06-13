@@ -1,0 +1,14 @@
+<section id="sample-table" class="mat-elevation-z8 bg-white">
+    <div class=" ml20 mr20 pb15">
+        <div class="row mt20">
+            <div class="column">
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+
+            </div>
+        </div>
+        <app-reusable-table [cols]="cols" [data]="dataSource" (onAction)="onActionHandler($event)"></app-reusable-table>
+        <mat-paginator *ngIf="dataSource.length > 0" #paginator [pageSize]="pageSize" [showFirstLastButtons]="false" [length]="totalSize" [pageIndex]="currentPage" (page)="handlePage($event)"></mat-paginator>
+    </div>
+</section>
